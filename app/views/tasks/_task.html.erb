@@ -1,0 +1,64 @@
+<div 
+  <% if task.completed %>
+    class="panel-task completed"
+  <% else %>
+    class="panel-task"
+  <% end %>
+  id="panel-task-<%= task.id.to_s %>">
+  <div class="panel-task-heading row-fade" role="tab" id="<%= "heading" + task.id.to_s %>">
+    <div class="floating">
+      <div class="panel-task-checkbox col-md-1">
+        <%= link_to complete_project_task_path(task.project,task), method: "post", remote: true do %>
+          <label>
+            <input type="checkbox" id="task-<%= task.id.to_s %>-checkbox" <%= "checked" if task.completed %>/>
+          </label>
+        <% end %>
+      </div>
+      <div class="panel-task-title col-md-9">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="<%= '#collapse' + task.id.to_s %>" aria-expanded="false" aria-controls="<%= 'collapse' + task.id.to_s %>">
+          <span><%= task.name %></span>
+          <span class="task-due-date pull-right">Due: <%= format_date(task.due_on) %></span>
+        </a>
+      </div>
+      <div class="panel-task-edit-button col-md-2">
+        <span class="edit-button task-edit-button">
+          <a href="#" class="btn btn-warning expand-edit-button" data-toggle="modal" data-target="<%= '#modal' + task.id.to_s %>">
+            <span class="glyphicon glyphicon-pencil"></span>
+            <span class="expand-text">Edit Task</span>
+        </a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div id="<%= 'collapse' + task.id.to_s %>" class="panel-collapse collapse" role="tabpanel" 
+        aria-labelledby="<%= "heading" + task.id.to_s %>">
+    <div class="panel-body">
+      <dl class="dl-horizontal">
+        <dt>Status: </dt>
+        <dd id="task-<%= task.id.to_s %>-status">
+            <% if task.completed %>
+              Completed on <%= format_date( task.completed_on ) %>
+            <% else %>
+              In-Progress
+            <% end %>
+        </dd>
+        <dt>Notes:</dt>
+        <dd><%= task.note %></dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="<%= 'modal' + task.id.to_s %>" tabindex="-1" role="dialog" aria-labelledby="<%= 'modal' + task.id.to_s + 'Label' %>" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="content-header">
+        <span class="header">Edit <%= task.name %></span>
+      </div>
+      <div class="modal-body">
+        <%= render "tasks/modal_task_form", project: project, task: task %>
+      </div>
+    </div>
+  </div>
+</div>

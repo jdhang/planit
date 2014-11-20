@@ -1,0 +1,10 @@
+<%= link_to project_path(project), class: "home-project-link row-fade" do %>
+  <div class="row home-project-row">
+    <div class="col-md-6">
+      <span><strong><%= project.name %></strong></span>       
+    </div>
+    <div class="col-md-6">
+      <span>Due: <%= format_date(project.due_on) %></span>
+    </div>
+  </div>
+<% end %>

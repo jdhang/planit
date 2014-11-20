@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20141115224211) do
 
   create_table "projects", force: true do |t|
     t.string   "name"
+    t.text     "description"
     t.date     "due_on"
     t.boolean  "completed",    default: false
     t.date     "completed_on"
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 20141115224211) do
 
   create_table "tasks", force: true do |t|
     t.string   "name"
+    t.text     "note"
     t.date     "due_on"
     t.boolean  "completed",    default: false
     t.date     "completed_on"

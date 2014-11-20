@@ -1,0 +1,22 @@
+<div class="top row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="content">
+      <div class="content-header">
+        <div class="back-button">
+          <%= link_to session[:last_page], class: "btn btn-link expand-back-button-back" do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="expand-text">Back</span>
+          <% end %>
+        </div>
+        <span class="header">New Task</span>
+      </div>
+      <ul class="content-nav list-inline">
+      </ul>
+      <div class="content-body col-md-8">
+        <div class="nobg-form-body">
+          <%= render "task_form" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

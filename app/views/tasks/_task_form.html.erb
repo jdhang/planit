@@ -1,0 +1,37 @@
+<%= form_for [@project, @task], :html => {:class => "form-horizontal new_project"} do |f| %>
+  <%= render "layouts/error", object: @task%>
+  <div class="form-group">
+    <%= f.label :project, class: "col-sm-3 control-label" %>
+    <div class="col-sm-7">
+      <input type="text" placeholder="<%= @project.name %>" class="form-control" disabled/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name, class: "col-sm-3 control-label" %>
+    <div class="col-sm-7">
+      <%= f.text_field :name, class: "form-control", autofocus: "autofocus" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :notes, class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= f.text_area :note, rows: "5", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :due_date, class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= f.date_select :due_on, {order: [:month, :day, :year], with_css_classes: true} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-9 col-sm-offset-3">
+      <%= f.submit @task.new_record? ? "Create" : "Update", remote: true, class: "btn btn-primary" %>
+    </div>
+  </div>
+  
+<% end %>

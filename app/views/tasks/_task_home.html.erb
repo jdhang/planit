@@ -1,0 +1,15 @@
+<%= link_to project_task_path(project,task), class: "home-task-link row-fade" do %>
+  <div class="row home-task-row">
+    <div class="col-md-12">
+      <div class="col-md-7">
+        <span home-task-name><strong><%= task.name %></strong></span>  
+      </div>
+      <div class="col-md-5 text-right">
+        <span>Due: <%= format_date(task.due_on) %></span>
+      </div>
+      <div class="col-md-12">
+        <span class="task-project-name"><%= task.project.name %></span>
+      </div> 
+    </div>
+  </div>
+<% end %>

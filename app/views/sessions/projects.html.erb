@@ -1,0 +1,34 @@
+<div class="top row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="content">
+      <div class="content-header">
+        <span class="header">Projects</span>
+        <span class="add-button">
+          <a href="#" class="btn btn-success expand-add-button" data-toggle="modal" data-target="#new-modal">
+            <span class="glyphicon glyphicon-plus"></span>
+            <span class="expand-text">Add New Project</span>
+          </a>
+        </span>
+        <div class="clearfix"></div>
+      </div>
+      <div class="content-body">
+        <% current_user.projects.order("due_on ASC").each do |project| %>
+          <%= render "projects/project", project: project %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="new-modal" tabindex="-1" role="dialog" aria-labelledby="new-modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="content-header">
+        <span class="header">New Project</span>
+      </div>
+      <div class="modal-body">
+        <%= render "projects/modal_project_form", project: @project %>
+      </div>
+    </div>
+  </div>
+</div>

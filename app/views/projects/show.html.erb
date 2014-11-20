@@ -1,0 +1,69 @@
+<div class="top row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="content">
+      <div class="content-header">
+        <div class="back-button">
+          <%= link_to projects_path, class: "btn btn-link expand-back-button" do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="expand-text">Projects</span>
+          <% end %>
+        </div>
+        <span class="header"><%= @project.name %></span>
+        <span class="header-dd">Due: <%= format_date(@project.due_on) %></span>
+        <span class="delete-button">
+          <%= link_to project_path(@project), action: "destroy", method: "delete", 
+              data: {confirm: "You are about to delete this project, are you sure?"}, class: "btn btn-danger expand-delete-button" do %>
+            <span class="glyphicon glyphicon-trash"></span>
+            <span class="expand-text">Delete Project</span>
+          <% end %>
+        </span>
+        <span class="edit-button">
+          <a href="#" class="btn btn-warning expand-edit-button" data-toggle="modal" data-target="#edit-project-modal">
+            <span class="glyphicon glyphicon-pencil"></span>
+            <span class="expand-text">Edit Project</span>
+          </a>
+        </span>
+        <span class="add-button">
+          <a href="#" class="btn btn-success expand-add-task-button" data-toggle="modal" data-target="#new-modal">
+            <span class="glyphicon glyphicon-plus"></span>
+            <span class="expand-text">Add Task</span>
+          </a>
+        </span>
+        <div class="clearfix"></div>
+      </div>
+      <div class="content-body">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <% @project.tasks.order("due_on ASC").each do |task| %>
+            <%= render "tasks/task", project: @project, task: task %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="new-modal" tabindex="-1" role="dialog" aria-labelledby="new-modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="content-header">
+        <span class="header">New Task</span>
+      </div>
+      <div class="modal-body">
+        <%= render "tasks/modal_task_form", project: @project, task: @task %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="edit-project-modal" tabindex="-1" role="dialog" aria-labelledby="edit-project-modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="content-header">
+        <span class="header">Edit <%= @project.name %></span>
+      </div>
+      <div class="modal-body">
+        <%= render "projects/modal_project_form", project: @project %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -19,7 +19,16 @@
 @import url(http://fonts.googleapis.com/css?family=Raleway);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
+html { 
+  background: url(/assets/bg2.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
+  background-color: transparent;
   padding-top: 50px;
   font-family: 'Raleway', sans-serif;
 }
@@ -28,27 +37,67 @@ nav {
   font-family: 'Open Sans', sans-serif;
 }
 
+a:active, a:focus {
+  outline: none;
+}
+
 .main {
-  background-color: #777;
-  padding: 0;
-  min-height: 700px;
+  padding: 0 0 30px 0;
 }
 
 .top {
   margin-top: 30px;
 }
 
+.message {
+  margin-top: 15px;
+  background-color: #FFF;
+  height: auto;
+}
+
+.welcome {
+  color: #FFF;
+  margin-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 50px 0;
+}
+
+.main-welcome {
+  font-size: 400%;
+}
+
+.log-reg-message {
+  padding: 10px;
+  background-color: #555;
+  color: #FFF;
+}
+
+.log-reg-message a {
+  color: #CCC;
+}
+
 .content {
-  background-color: #DDD;
+  background-color: rgba(240, 240, 240, 0.95);
   min-height: 640px;
-  margin-right: 30px;
+  box-shadow: 0 0 12px #000;
+  border: 5px solid #222;
+  border-top: none;
 }
 
 .content-header {
   color: #FFF;
-  background-color: #333;
-  font-size: 200%;
-  padding: 10px 20px;
+  background-color: #222;
+  padding: 10px 5px 10px 0;
+}
+
+.header {
+  margin-left: 15px;
+  font-size: 220%;
+}
+
+.header-dd {
+  font-size: 150%;
+  margin-left: 50px;
 }
 
 @media (max-width: 992px) {
@@ -69,7 +118,7 @@ nav {
 }
 
 .sidebar-wrapper {
-  background-color: #ddd;
+  background-color: #777;
 }
 
 .sidebar-nav {
@@ -82,19 +131,19 @@ nav {
 
 .sidebar-nav li a {
   display: block;
-  color: #000;
+  color: #EEE;
   padding: 10px 20px;
 }
 
 .sidebar-nav li a:hover {
-  background-color: #aaa;
+  background-color: #BBB;
   text-decoration: none;
 }
 
 .content-nav {
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
+  background-color: #EDEDED;
 }
 
 .content-nav li {
@@ -109,16 +158,133 @@ nav {
 }
 
 .content-nav li a:hover {
-  background-color: #BCBCBC;
+  background-color: #AAA;
   text-decoration: none;
 }
 
 .content-body {
+  min-height: 100%;
+}
+
+.row-fade {
+  -webkit-transition: all 450ms ease-out;
+  -moz-transition: all 450ms ease-out;
+  -o-transition: all 450ms ease-out;
+  transition: all 450ms ease-out;
+}
+
+.row-fade:hover {
+  -webkit-transition: all 500ms ease-out;
+  -moz-transition: all 500ms ease-out;
+  -o-transition: all 500ms ease-out;
+  transition: all 500ms ease-out;
+  background-color: rgba(162, 222, 208, 0.8);
+}
+
+.back-button {
+  padding: 0;
+  margin: 0;
+  float: left;
+  border-right: 1px solid #FFF;
+}
+
+.back-button > a {
+  border-radius: 0;
+  border: none;
+  display: block;
+  padding: 14px 15px 10px 10px;
+  color: #FFF;
+}
+
+.back-button > a:hover {
+  text-decoration: none;
+  color: #FFF;
+}
+
+.add-button, .edit-button, .delete-button {
+  float: right;
+  padding: 0;
+  margin: 0;
+  margin-left: 5px;
+}
+
+.expand-add-button,
+.expand-edit-button,
+.expand-delete-button,
+.expand-add-task-button,
+.expand-back-button {
+  border-radius: 0;
+  border: none;
+  padding: 12px 15px;
+}
+
+.expand-edit-button:focus,
+.expand-edit-button:active,
+.expand-add-task-button:focus,
+.expand-add-task-button:active {
+  outline: none;
+}
+
+.expand-text {
+  margin: 0;
+  float: right;
+  width: 0;
+  overflow: hidden;
+  -webkit-transition: all 200ms ease-out;
+  -moz-transition: all 200ms ease-out;
+  -o-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
+}
+
+.expand-back-button:hover .expand-text {
+  width: 55px;
+  margin-left: 5px;
+}
+
+.expand-back-button-back:hover .expand-text {
+  width: 35px;
+  margin-left: 5px;
+}
+
+.expand-add-button:hover .expand-text { 
+  width: 112px; 
+  margin-left: 5px;
+}
+
+.expand-add-task-button:hover .expand-text {
+  width: 65px;
+  margin-left: 5px;
+}
+
+.expand-edit-button:hover .expand-text {
+  width: 80px;
+  margin-left: 5px;
+}
+
+.expand-delete-button:hover .expand-text {
+  width: 95px;
+  margin-left: 5px;
 }
 
 /* PROJECT AND TASK FORM STYLING */
+.form-container {
+  box-shadow: 0 0 12px #000;
+}
+
+.nobg-form-body {
+  padding: 20px 10px;
+}
+
 .form-body {
-  margin-top: 20px;
+  background-color: #DDD;
+  padding: 10px;
+}
+
+.form-header {
+  font-size: 150%;
+  padding: 5px 10px;
+  background-color: #555;
+  color: #FFF;
 }
 
 .month, .day, .year {
@@ -140,29 +306,284 @@ nav {
 /* END PROJECT AND TASK FORM STYLING */
 
 /* TASK STYLING */
-.task-header {
-  font-size: 150%;
-  padding: 10px 20px;
+.task-row {
+  border-bottom: 2px solid #BBB;
+  margin: 0;
+  background-color: #CDCDCD;
+}
+
+.task-link-parent {
+}
+
+.task-link {
+  padding: 0;
+  display: block;
+  color: #000;
+}
+
+.task-link:hover {
+  color: #000;
+}
+
+.task-complete {
+  margin-left: 15px;
+  vertical-align: middle;
+}
+
+.task-complete input[type="checkbox"] {
+  margin: 0;
+  height: 50px;
+  vertical-align: middle;
+}
+
+.tasks-body {
+  margin-top: 0;
+}
+
+.task-edit-button > a {
+  padding: 15px 18px;
+  display: block;
+}
+
+.floating {
+  float: left;
+  height: 100%;
+  width: 100%;
+}
+
+.panel-task-heading::before,
+.panel-task-heading::after {
+  content: " ";
+  display: table;
+}
+
+.panel-task-heading::after {
+  clear: both;
+}
+
+.panel-task-heading {
+  border-bottom: 1px solid #DDD;
+}
+
+.panel-task-title {
+  font-size: 125%;
+}
+
+.panel-task-checkbox,
+.panel-task-title,
+.panel-task-edit-button {
+  display: block;
+  padding: 0;
+}
+
+.panel-task-title > a {
+  color: #000;
+  text-decoration: none;
+}
+
+.panel-task-checkbox {
+  text-align: center;
+}
+
+.panel-task-checkbox label,
+.panel-task-checkbox input[type="checkbox"] {
+  margin: 0;
+}
+
+.panel-task-checkbox label {
+  padding: 14px 34px 16px 34px;
+  border-right: 1px solid #DDD;
+}
+
+.panel-task-title > a {
+  display: block;
+  padding: 13px 0 12px 20px;
+}
+
+.panel-task-edit-button {
+}
+
+.panel-task {
   background-color: #AAA;
 }
 
-.task {
-  background-color: #000;
-  color: #FFF;
-  padding: 20px 15px;
-  border-radius: 30px;
+.panel-collapse {
+  background-color: #CCC;
+  border-bottom: 1px solid #DDD;
 }
 
-.checkbox input[type="checkbox"] {
-  
+.panel-body dl {
+  margin: 0;
+}
+
+.panel-body > .dl-horizontal dt {
+  width: 140px;
+}
+
+.panel-body > .dl-horizontal dd {
+  margin-left: 150px;
+}
+
+.modal-dialog {
+  margin: 50px auto;
+}
+
+.modal-backdrop {
+  background-color: #565656;
+}
+
+.modal-content {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 /* END TASK STYLING */
 
-/* REGISTER AND LOGIN FORM STYLING */
-.form-header {
-  
+/* PROJECT STYLING */
+.section-bar {
+  margin: 0;
+  padding: 0;
+  height: 1px;
+  background-color: #BBB;
 }
 
+.section-bar-sm {
+  margin: 0;
+  padding: 0;
+  height: 1px;
+  background-color: #AAA;
+}
 
-/* END REGISTER AND LOGIN FORM STYLING */
+.project-row {
+  border-bottom: 2px solid #DDD;
+}
+
+.project-row .project-link {
+  display: block;
+  color: #000;
+}
+
+.project-content {
+  padding: 4px 0 0 0;
+}
+
+.project-info {
+  padding-bottom: 5px;
+  padding-right: 0;
+}
+
+.project-name {
+  font-size: 190%;
+}
+
+.project-desc {
+}
+
+.project-dd {
+  font-size: 110%;
+}
+
+.project-tasks {
+  padding: 0;
+}
+
+.tasks {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.task-count {
+  padding: 5px 15px;
+  background-color: #BBB;
+  font-size: 300%;
+}
+
+.info {
+  padding-right: 0;
+}
+
+.buttons {
+  padding: 0;
+  padding-right: 15px;
+}
+
+.buttons a {
+  float: right;
+}
+
+.completed {
+  opacity: 0.5;
+}
+
+.completed .panel-task-title,
+.completed .task-due-date {
+  text-decoration: line-through;
+}
+
+/* END PROJECT STYLING */
+
+/* HOME STYLING */
+.home-projects {
+  min-height: 576px;
+  padding-left: 0;
+  border-left: 1px solid #222;
+}
+
+.home-tasks {
+  padding-right: 0;
+}
+
+.home-header {
+  margin-left: 10px;
+  font-size: 220%;
+}
+
+.col-header {
+  padding: 5px 0;
+  padding-left: 10px;
+  background-color: #555;
+  color: #FFF;
+  font-size: 170%;  
+}
+
+.col-header a {
+  color: #FFF;
+}
+
+.col-header a:hover {
+  color: #DDD;
+  text-decoration: none;
+}
+
+.col-body {
+  font-size: 120%;
+}
+
+.home-project-link,
+.home-task-link {
+  border-bottom: 2px solid #DDD;
+  padding: 10px 0;
+  display: block;
+  color: #000;
+}
+
+.home-project-link {
+  padding-left: 10px;
+}
+
+.home-project-link:hover,
+.home-task-link:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+.task-project-name {
+  font-size: 90%;
+}
+
+.home-task-name {
+  font-size: 130%;
+}
+
+/* END HOME STYLING */

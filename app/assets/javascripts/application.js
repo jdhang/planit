@@ -15,3 +15,11 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+
+$(document).ready(function () {
+  $(':checkbox').change(function (e) {
+    console.log(e);
+    $(e.currentTarget).parents(".panel-task").find(".task-status");    
+  });
+});

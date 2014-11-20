@@ -1,0 +1,90 @@
+<div class="project-row row-fade">
+
+  <div class="row">
+    <div class="col-md-9 info">
+      <%= link_to project_path(project), class: "project-link" do %>
+
+        <div class="row project-content">
+          <div class="col-md-12">
+
+            <div class="col-md-10 project-info">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <span class="project-name">
+                    <%= project.name %>
+                  </span>
+                </div>
+
+                <div class="col-md-12">
+                  <span class="project-desc">
+                    <%= project.description %>
+                  </span>
+                </div>
+
+                <div class="col-md-12">
+                  <span class="project-dd">
+                   <strong>Due Date: </strong> <%= format_date(project.due_on) %>
+                  </span>
+                </div>
+                
+              </div>
+
+            </div>
+
+            <div class="col-md-2 project-tasks">
+              <div class="tasks">
+                <span class="task-count">
+                  <%= project.completed_tasks %>/<%= project.total_tasks %>
+                </span>
+              </div>
+            </div> 
+
+        </div>
+      <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-3 buttons">
+
+      <div class="row">
+        <div class="col-md-12">
+<!--           <%= link_to edit_project_path(project), class: "btn btn-warning expand-edit-button" do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+            <span class="expand-text">Edit Project</span>
+          <% end %> -->
+          <a href="#" class="btn btn-warning expand-edit-button" data-toggle="modal" data-target="<%= '#edit-project-modal' + project.id.to_s %>">
+            <span class="glyphicon glyphicon-pencil"></span>
+            <span class="expand-text">Edit Project</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to project_path(project), action: "destroy", method: "delete", 
+            data: {confirm: "You are about to delete a project, are you sure?"}, class: "btn btn-danger expand-delete-button" do %>
+            <span class="glyphicon glyphicon-trash"></span>
+            <span class="expand-text">Delete Project</span>
+          <% end %>           
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="modal fade" id="<%= 'edit-project-modal' + project.id.to_s %>" tabindex="-1" role="dialog" aria-labelledby="<%= 'edit-project-modal' + project.id.to_s + 'Label' %>" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="content-header">
+        <span class="header">Edit <%= project.name %></span>
+      </div>
+      <div class="modal-body">
+        <%= render "projects/modal_project_form", project: project %>
+      </div>
+    </div>
+  </div>
+</div>
+

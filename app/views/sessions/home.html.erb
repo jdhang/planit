@@ -1,0 +1,39 @@
+<div class="top row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="content">
+      <div class="content-header">
+        <span class="home-header">Home</span>
+      </div>
+      <div class="content-body">
+
+        <div class="row">
+
+          <div class="col-md-8 home-tasks">
+            <div class="col-header">
+              <span><%= link_to "Current Tasks", "/tasks" %></span>
+            </div>
+            <div class="col-body">
+              <% current_user.tasks.order("due_on ASC").each do |task| %>
+                <% if !task.completed %>
+                  <%= render "tasks/task_home", project: task.project, task: task %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="col-md-4 home-projects">
+            <div class="col-header">
+              <span><%= link_to "Current Projects", "/projects" %></span>
+            </div>
+            <div class="col-body">
+              <% current_user.projects.order("due_on ASC").limit(10).each do |project| %>
+                <%= render "projects/project_home", project: project  %>
+              <% end %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
