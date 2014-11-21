@@ -41,6 +41,10 @@ a:active, a:focus {
   outline: none;
 }
 
+.alert {
+  border-radius: 0;
+}
+
 .main {
   padding: 0 0 30px 0;
 }
