@@ -1,0 +1,5 @@
+<% current_user.tasks.order("completed ASC").order("due_on ASC").each do |task| %>
+  <% if !task.completed %>
+    <%= render "tasks/task_only", project: task.project, task: task %>
+  <% end %>
+<% end %>

@@ -9,7 +9,7 @@
           <% end %>
         </div>
         <span class="header"><%= @task.name %></span>
-        <span class="header-dd">Due: <%= due_date(@task.due_on) %></span>
+        <span class="header-dd">Due: <%= format_date(@task.due_on) %></span>
         <span class="delete-button">
           <%= link_to project_task_path(@project, @task), action: "destroy", method: "delete", 
               data: {confirm: "You are about to delete this project, are you sure?"}, class: "btn btn-danger expand-delete-button" do %>
@@ -25,11 +25,10 @@
         </span>
         <div class="clearfix"></div>
       </div>
-      <div class="content-body">
-        <dl class="dl-horizontal">
-          <dt>Notes</dt>
-          <dd><%= @task.note %></dd>
-        </dl>
+      <div class="content-body col-md-8">
+        <div class="nobg-form-body">
+          <%= render "task_only_form" %>
+        </div>
       </div>
     </div>
   </div>

@@ -19,7 +19,7 @@
   <div class="panel-task-heading row-fade" role="tab" id="<%= "heading" + task.id.to_s %>">
     <div class="floating">
       <div class="panel-task-checkbox col-md-1">
-        <%= link_to complete_project_task_path(task.project,task), method: "post", remote: true do %>
+        <%= link_to complete_project_task_path(project, task), method: "post", remote: true do %>
           <label>
             <input type="checkbox" id="task-<%= task.id.to_s %>-checkbox" <%= "checked" if task.completed %>/>
           </label>

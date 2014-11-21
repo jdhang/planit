@@ -16,6 +16,9 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.assigned_to = current_user
     @project.tasks << @task
+    current_user.tasks << @task
+
+    binding.pry
 
     if @task.save
       flash[:notice] = "Task was successfully created."
@@ -30,6 +33,10 @@ class TasksController < ApplicationController
   end
 
   def update
+    if task_params[:completed]
+      @task.completed_on = Date.today
+    end
+    
     if @task.update(task_params)
       flash[:notice] = "Task was successfully updated."
       redirect_to project_path(@project)
@@ -63,7 +70,7 @@ class TasksController < ApplicationController
 
   private
     def task_params
-      params.require(:task).permit(:name, :due_on, :note)
+      params.require(:task).permit(:name, :due_on, :note, :project_id, :completed)
     end
 
     def set_project

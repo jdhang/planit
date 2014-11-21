@@ -18,7 +18,7 @@ resources :users, except: [:index, :destroy]
       post :complete
     end
     
-    resources :tasks, except: [:index, :show] do
+    resources :tasks, except: [:index] do
       member do
         post :complete
       end

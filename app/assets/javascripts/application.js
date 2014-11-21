@@ -18,8 +18,4 @@
 
 
 $(document).ready(function () {
-  $(':checkbox').change(function (e) {
-    console.log(e);
-    $(e.currentTarget).parents(".panel-task").find(".task-status");    
-  });
 });
