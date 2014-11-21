@@ -32,9 +32,26 @@
         <div class="clearfix"></div>
       </div>
       <div class="content-body">
+        <div class="current-task-header">
+          <span class="glyphicon glyphicon-unchecked"></span>
+          <span class="task-title">Current Tasks</span>
+        </div>
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-          <% @project.tasks.order("due_on ASC").each do |task| %>
-            <%= render "tasks/task", project: @project, task: task %>
+          <% @project.tasks.order("completed ASC").order("due_on ASC").each do |task| %>
+            <% if !task.completed %>
+              <%= render "tasks/task", project: @project, task: task %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="complete-task-header">
+          <span class="glyphicon glyphicon-ok"></span>
+          <span class="task-title">Completed Tasks</span>
+        </div>
+        <div class="panel-group-complete" id="accordion_complete" role="tablist" aria-multiselectable="true">
+          <% @project.tasks.order("completed ASC").order("due_on ASC").each do |task| %>
+            <% if task.completed %>
+              <%= render "tasks/task", project: @project, task: task %>
+            <% end %>
           <% end %>
         </div>
       </div>

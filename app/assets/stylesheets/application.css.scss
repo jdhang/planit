@@ -67,8 +67,7 @@ a:active, a:focus {
 }
 
 .log-reg-message {
-  padding: 10px;
-  background-color: #555;
+  padding-top: 5px;
   color: #FFF;
 }
 
@@ -268,7 +267,9 @@ a:active, a:focus {
 
 /* PROJECT AND TASK FORM STYLING */
 .form-container {
+  background-color: #555;
   box-shadow: 0 0 12px #000;
+  padding: 10px 0;
 }
 
 .nobg-form-body {
@@ -276,8 +277,8 @@ a:active, a:focus {
 }
 
 .form-body {
-  background-color: #DDD;
-  padding: 10px;
+  background-color: #555;
+  padding: 10px 20px;
 }
 
 .form-header {
@@ -351,6 +352,10 @@ a:active, a:focus {
   width: 100%;
 }
 
+.panel-group {
+  margin-bottom: 0;
+}
+
 .panel-task-heading::before,
 .panel-task-heading::after {
   content: " ";
@@ -362,6 +367,7 @@ a:active, a:focus {
 }
 
 .panel-task-heading {
+  background-color: #CCC;
   border-bottom: 1px solid #DDD;
 }
 
@@ -404,11 +410,14 @@ a:active, a:focus {
 }
 
 .panel-task {
-  background-color: #AAA;
+  -webkit-transition: all 450ms ease-out;
+  -moz-transition: all 450ms ease-out;
+  -o-transition: all 450ms ease-out;
+  transition: all 450ms ease-out;
 }
 
 .panel-collapse {
-  background-color: #CCC;
+  background-color: #CDCDCD;
   border-bottom: 1px solid #DDD;
 }
 
@@ -436,6 +445,26 @@ a:active, a:focus {
   border: none;
   border-radius: 0;
   box-shadow: none;
+}
+
+.complete-task-header,
+.current-task-header {
+  color: #FFF;
+  padding: 10px 15px;
+  font-size: 150%;
+}
+
+.current-task-header {
+  color: #000;
+  background-color: #F4D03F;
+}
+
+.complete-task-header {
+  background-color: #2ECC71;
+}
+
+.task-title {
+  padding-left: 15px;
 }
 
 /* END TASK STYLING */
@@ -587,3 +616,19 @@ a:active, a:focus {
 }
 
 /* END HOME STYLING */
+
+.late {
+  background-color: rgba(255, 0, 0, 0.75);
+}
+
+.today {
+  background-color: rgba(249, 200, 0, 0.75);
+}
+
+.late-task {
+  color: rgba(255, 0, 0, 1.0);
+}
+
+.today-task {
+  color: #000;
+}

@@ -1,0 +1,5 @@
+<% @project.tasks.order("completed ASC").order("completed_on ASC").order("due_on ASC").each do |task| %>
+  <% if !task.completed %>
+    <%= render "tasks/task", project: @project, task: task %>
+  <% end %>
+<% end %>

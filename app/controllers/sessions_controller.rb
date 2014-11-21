@@ -41,6 +41,7 @@ def destroy
   end
 
   def tasks
+    @task = Task.new
   end
 
 

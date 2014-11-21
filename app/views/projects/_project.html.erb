@@ -1,4 +1,13 @@
-<div class="project-row row-fade">
+<% if Date.today == project.due_on %>
+  <div class="project-row row-fade today">
+  <% @project_name = project.name + " (Due Today)" %>
+<% elsif (Date.today - project.due_on) > 0 %>
+  <div class="project-row row-fade late">
+  <% @project_name = project.name + " (Late)" %>
+<% else %>
+  <div class="project-row row-fade">
+  <% @project_name = project.name %>
+<% end %>
 
   <div class="row">
     <div class="col-md-9 info">
@@ -12,7 +21,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <span class="project-name">
-                    <%= project.name %>
+                    <%= @project_name %>
                   </span>
                 </div>
 

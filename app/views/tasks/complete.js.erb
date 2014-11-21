@@ -2,8 +2,12 @@
   $("#panel-task-<%= @task.id.to_s %>").addClass('completed')
   $("#task-<%= @task.id.to_s %>-checkbox").prop('checked', true)
   $("#task-<%= @task.id.to_s %>-status").html("Completed on <%= format_date(@task.completed_on) %>")
+  $(".panel-group").html("<%= escape_javascript (render 'projects/project_tasks' )%>")
+  $(".panel-group-complete").html("<%= escape_javascript (render 'projects/project_tasks_complete' )%>")
 <% else %>
   $("#panel-task-<%= @task.id.to_s %>").removeClass('completed')
   $("#task-<%= @task.id.to_s %>-checkbox").prop('checked', false)
   $("#task-<%= @task.id.to_s %>-status").html("In-Progress")
+  $(".panel-group").html("<%= escape_javascript (render 'projects/project_tasks' )%>")
+  $(".panel-group-complete").html("<%= escape_javascript (render 'projects/project_tasks_complete' )%>")
 <% end %>

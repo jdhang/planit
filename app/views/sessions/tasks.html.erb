@@ -3,10 +3,15 @@
     <div class="content">
       <div class="content-header">
         <span class="header">Tasks</span>
-      <ul class="content-nav list-inline">
-      </ul>
+      </div>
       <div class="content-body">
-        
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <% current_user.tasks.order("completed ASC").order("due_on ASC").each do |task| %>
+            <% if !task.completed %>
+              <%= render "tasks/task_only", project: task.project, task: task %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
