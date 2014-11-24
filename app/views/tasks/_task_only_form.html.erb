@@ -3,8 +3,8 @@
 
   <div class="form-group">
     <%= f.label :completed, class: "col-sm-3 control-label" %>
-    <div class="col-sm-4">
-      <%= f.check_box :completed, {}, checked_value = true, unchecked_value = false %>
+    <div class="col-sm-1">
+      <%= f.check_box :completed, { class: "form-checkbox" }, checked_value = true, unchecked_value = false %>
     </div>
   </div>
   

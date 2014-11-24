@@ -1,0 +1,11 @@
+<% if @project.completed %>
+  <%= link_to projects_completed_path, class: "btn btn-link expand-back-button" do %>
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="expand-text">Projects</span>
+  <% end %>
+<% else %>
+  <%= link_to projects_path, class: "btn btn-link expand-back-button" do %>
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="expand-text">Projects</span>
+  <% end %>
+<% end %>

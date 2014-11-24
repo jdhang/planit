@@ -3,24 +3,18 @@
     <div class="content">
       <div class="content-header">
         <div class="back-button">
-          <%= link_to project_path(@project), class: "btn btn-link expand-back-button" do %>
+          <%= link_to session[:last_page], class: "btn btn-link expand-back-button-back" do %>
             <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="expand-text">Project</span>
+            <span class="expand-text">Back</span>
           <% end %>
         </div>
         <span class="header"><%= @task.name %></span>
-        <span class="header-dd">Due: <%= format_date(@task.due_on) %></span>
+        <span class="header-dd">Due: <%= format_date(@task.due_on) %> (<%= relative_date(@task.due_on) %>)</span>
         <span class="delete-button">
           <%= link_to project_task_path(@project, @task), action: "destroy", method: "delete", 
               data: {confirm: "You are about to delete this project, are you sure?"}, class: "btn btn-danger expand-delete-button" do %>
             <span class="glyphicon glyphicon-trash"></span>
             <span class="expand-text">Delete Task</span>
-          <% end %>
-        </span>
-        <span class="edit-button">
-          <%= link_to edit_project_task_path(@project, @task), class: "btn btn-warning expand-edit-button" do %>
-            <span class="glyphicon glyphicon-pencil"></span>
-            <span class="expand-text">Edit Task</span>
           <% end %>
         </span>
         <div class="clearfix"></div>

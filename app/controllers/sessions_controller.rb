@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
 
   end
 
-def destroy
+  def destroy
     session[:user_id] = nil
     flash[:notice] = "You have successfully logged out."
     redirect_to root_path
@@ -40,8 +40,14 @@ def destroy
     @project = Project.new
   end
 
+  def completed_projects
+    @project = Project.new
+  end
+
   def tasks
-    @task = Task.new
+  end
+
+  def completed_tasks    
   end
 
 

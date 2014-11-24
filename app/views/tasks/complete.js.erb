@@ -5,6 +5,9 @@
   $(".panel-group").html("<%= escape_javascript (render 'projects/project_tasks') %>")
   $(".panel-group-complete").html("<%= escape_javascript (render 'projects/project_tasks_complete' )%>")
   $(".panel-group-tasks").html("<%= escape_javascript (render 'tasks/tasks') %>")
+  $(".panel-group-tasks-completed").html("<%= escape_javascript (render 'tasks/tasks_completed') %>")
+  $(".header-dd").html("<%= escape_javascript (render 'projects/header_dd') %>")
+  $(".back-button").html("<%= escape_javascript (render 'projects/back_button') %>")
 <% else %>
   $("#panel-task-<%= @task.id.to_s %>").removeClass('completed')
   $("#task-<%= @task.id.to_s %>-checkbox").prop('checked', false)
@@ -12,4 +15,7 @@
   $(".panel-group").html("<%= escape_javascript (render 'projects/project_tasks') %>")
   $(".panel-group-complete").html("<%= escape_javascript (render 'projects/project_tasks_complete' )%>")
   $(".panel-group-tasks").html("<%= escape_javascript (render 'tasks/tasks') %>")
+  $(".panel-group-tasks-completed").html("<%= escape_javascript (render 'tasks/tasks_completed') %>")
+  $(".header-dd").html("<%= escape_javascript (render 'projects/header_dd') %>")
+  $(".back-button").html("<%= escape_javascript (render 'projects/back_button') %>")
 <% end %>

@@ -31,7 +31,7 @@
             <span class="glyphicon glyphicon-exclamation-sign <%= @status %>"></span>
           <% end %>
           <span><%= @task_name %></span>
-          <span class="task-due-date pull-right">Due: <%= format_date(task.due_on) %></span>
+          <span class="task-due-date pull-right">Due: <%= format_date(task.due_on) %> (<%= relative_date(task.due_on) %>)</span>
         </a>
       </div>
       <div class="panel-task-edit-button col-md-2">

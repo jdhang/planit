@@ -12,5 +12,6 @@
     <%= f.submit "Register", class: "btn btn-success pull-right" %>
   <% else %>
     <%= f.submit "Update", class: "btn btn-primary" %>
+    <%= link_to "Back", session[:last_page], class: "btn btn-default" %>
   <% end %>
 <% end %>

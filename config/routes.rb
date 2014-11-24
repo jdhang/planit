@@ -8,9 +8,11 @@ Rails.application.routes.draw do
 
   # profile routes
   get '/home', to: "sessions#home"
-  get '/profile', to: "sessions#profile"
+  get '/edit_profile', to: "users#edit"
   get '/projects', to: "sessions#projects"
+  get '/projects/completed', to: 'sessions#completed_projects'
   get '/tasks', to: "sessions#tasks"
+  get '/tasks/completed', to: "sessions#completed_tasks"
 
 resources :users, except: [:index, :destroy]
   resources :projects, except: [:index] do

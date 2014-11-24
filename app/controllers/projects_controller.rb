@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, except: [:index, :new, :create]
+  before_action :set_last_page, only: [:show, :new, :create, :edit, :update]
   before_action :require_user
 
   def index
@@ -12,7 +13,6 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    session[:last_page] = request.env['HTTP_REFERER']
   end
 
   def create
@@ -28,7 +28,6 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    session[:last_page] = request.env['HTTP_REFERER']
   end
 
   def update
@@ -53,7 +52,11 @@ class ProjectsController < ApplicationController
     end
 
     def set_project
-      @project = Project.find(params[:id])
+      @project = Project.find_by(slug: params[:id])
+    end
+
+    def set_last_page
+      session[:last_page] = request.env['HTTP_REFERER']
     end
 
 end

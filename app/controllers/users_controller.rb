@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, except: [:new, :create]
+  before_action :set_user, except: [:new, :create, :edit, :update]
   before_action :require_user, except: [:new, :create]
 
   def show
@@ -21,10 +21,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit    
+  def edit
+    @user = current_user    
   end
 
   def update
+    @user = current_user
+
     if @user.update(user_params)
       flash[:notice] = "You have successfully updated your information."
       redirect_to profile_path

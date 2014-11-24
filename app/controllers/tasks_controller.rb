@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_project
+  before_action :set_last_page, only: [:show, :new, :create, :edit, :update]
   before_action :set_task, except: [:index, :new, :create]
   before_action :require_user
 
@@ -7,9 +8,11 @@ class TasksController < ApplicationController
     @tasks = @project.tasks
   end
 
+  def show
+  end
+
   def new
     @task = Task.new
-    session[:last_page] = request.env['HTTP_REFERER']
   end
 
   def create
@@ -17,8 +20,6 @@ class TasksController < ApplicationController
     @task.assigned_to = current_user
     @project.tasks << @task
     current_user.tasks << @task
-
-    binding.pry
 
     if @task.save
       flash[:notice] = "Task was successfully created."
@@ -28,8 +29,7 @@ class TasksController < ApplicationController
     end
   end
 
-  def edit 
-    session[:last_page] = request.env['HTTP_REFERER']   
+  def edit   
   end
 
   def update
@@ -39,7 +39,7 @@ class TasksController < ApplicationController
     
     if @task.update(task_params)
       flash[:notice] = "Task was successfully updated."
-      redirect_to project_path(@project)
+      redirect_to :back
     else
       render :edit
     end
@@ -62,11 +62,20 @@ class TasksController < ApplicationController
 
     @task.save
 
+    if @project.completed_tasks == @project.total_tasks
+      @project.completed = true
+      @project.completed_on = Date.today
+    else
+      @project.completed = false
+      @project.completed_on = nil
+    end
+
+    @project.save
+
     respond_to do |format|
       format.js {}
     end
   end
-
 
   private
     def task_params
@@ -74,11 +83,15 @@ class TasksController < ApplicationController
     end
 
     def set_project
-      @project = Project.find(params[:project_id])
+      @project = Project.find_by(slug: params[:project_id])
     end
 
     def set_task
       @task = Task.find(params[:id])
+    end
+
+    def set_last_page
+      session[:last_page] = request.env['HTTP_REFERER']  
     end
 
 end

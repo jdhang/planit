@@ -1,0 +1,5 @@
+<% if @project.completed %>
+  Completed <%= format_date(@project.completed_on) %>
+<% else %>
+  Due <%= format_date(@project.due_on) %> (<%= relative_date(@project.due_on) %>)
+<% end %>

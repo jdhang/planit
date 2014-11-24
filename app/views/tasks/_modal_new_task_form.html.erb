@@ -3,7 +3,7 @@
   <div class="form-group">
     <%= f.label :project, class: "col-sm-3 control-label" %>
     <div class="col-sm-7">
-      <%= f.collection_select :project_id, Project.all, :id, :name, {}, class: "form-control" %>
+      <input type="text" placeholder="<%= project.name %>" class="form-control" disabled/>
     </div>
   </div>
 

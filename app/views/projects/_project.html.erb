@@ -1,4 +1,7 @@
-<% if Date.today == project.due_on %>
+<% if project.completed %>
+  <div class="project-row row-fade">
+  <% @project_name = project.name %>
+<% elsif Date.today == project.due_on %>
   <div class="project-row row-fade today">
   <% @project_name = project.name + " (Due Today)" %>
 <% elsif (Date.today - project.due_on) > 0 %>
@@ -33,7 +36,7 @@
 
                 <div class="col-md-12">
                   <span class="project-dd">
-                   <strong>Due Date: </strong> <%= format_date(project.due_on) %>
+                   <strong>Due Date: </strong> <%= format_date(project.due_on) %> (<%= relative_date(project.due_on) %>)
                   </span>
                 </div>
                 
@@ -58,10 +61,6 @@
 
       <div class="row">
         <div class="col-md-12">
-<!--           <%= link_to edit_project_path(project), class: "btn btn-warning expand-edit-button" do %>
-            <span class="glyphicon glyphicon-pencil"></span>
-            <span class="expand-text">Edit Project</span>
-          <% end %> -->
           <a href="#" class="btn btn-warning expand-edit-button" data-toggle="modal" data-target="<%= '#edit-project-modal' + project.id.to_s %>">
             <span class="glyphicon glyphicon-pencil"></span>
             <span class="expand-text">Edit Project</span>

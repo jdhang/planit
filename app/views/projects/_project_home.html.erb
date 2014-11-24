@@ -1,10 +1,22 @@
-<%= link_to project_path(project), class: "home-project-link row-fade" do %>
+<% @project_name = project.name %>
+<% @class = "home-project-link row-fade" %>
+<% if Date.today == project.due_on %>
+  <% @project_name = project.name + " (Today)" %>
+  <% @class = "home-project-link row-fade today" %>
+<% elsif (Date.today - project.due_on) > 0 %>
+  <% @project_name = project.name + " (Late)" %>
+  <% @class = "home-project-link row-fade late" %>
+<% end %>
+
+<%= puts @class %>
+
+<%= link_to project_path(project), class: @class do %>
   <div class="row home-project-row">
-    <div class="col-md-6">
-      <span><strong><%= project.name %></strong></span>       
+    <div class="col-md-7">
+      <span><strong><%= @project_name %></strong></span>       
     </div>
-    <div class="col-md-6">
-      <span>Due: <%= format_date(project.due_on) %></span>
+    <div class="col-md-5">
+      <span>Due <%= format_date(project.due_on) %></span>
     </div>
   </div>
 <% end %>

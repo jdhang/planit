@@ -1,15 +1,31 @@
-<%= link_to project_task_path(project,task), class: "home-task-link row-fade" do %>
+<% @task_name = task.name %>
+<% @status = false %>
+<% if Date.today == task.due_on %>
+  <% @task_name = task.name + " (Due Today)" %>
+  <% @status = "today-task" %>
+<% elsif (Date.today - task.due_on) > 0 %>
+  <% @task_name = task.name + " (Late)" %>
+  <% @status = "late-task" %>
+<% end %>
+
+<%= link_to project_path(project), class: "home-task-link row-fade"  do %>
   <div class="row home-task-row">
     <div class="col-md-12">
       <div class="col-md-7">
-        <span home-task-name><strong><%= task.name %></strong></span>  
+        <% if @status %>
+          <span class="glyphicon glyphicon-exclamation-sign <%= @status %>"></span>
+        <% end %>
+        <span class="home-task-name"><strong><%= @task_name %></strong></span>  
       </div>
       <div class="col-md-5 text-right">
-        <span>Due: <%= format_date(task.due_on) %></span>
+        <span>Due <%= format_date(task.due_on) %></span>
       </div>
-      <div class="col-md-12">
+      <div class="col-md-7">
         <span class="task-project-name"><%= task.project.name %></span>
-      </div> 
+      </div>
+      <div class="col-md-5 text-right">
+        <span>(<%= relative_date(task.due_on) %>)</span>
+      </div>
     </div>
   </div>
 <% end %>

@@ -2,7 +2,7 @@
   <div class="col-md-10 col-md-offset-1">
     <div class="content">
       <div class="content-header">
-        <span class="header">Projects</span>
+        <span class="header">Completed Projects</span>
         <span class="add-button">
           <a href="#" class="btn btn-success expand-add-button" data-toggle="modal" data-target="#new-modal">
             <span class="glyphicon glyphicon-plus"></span>
@@ -10,16 +10,16 @@
           </a>
         </span>
         <span class="add-button">
-          <%= link_to projects_completed_path, class: "btn btn-info expand-complete-button" do %>
-            <span class="glyphicon glyphicon-ok"></span>
-            <span class="expand-text">Completed Projects</span>
+          <%= link_to projects_path, class: "btn btn-warning expand-add-button" do %>
+            <span class="glyphicon glyphicon-unchecked"></span>
+            <span class="expand-text">Current Projects</span>
           <% end %>
         </span>
         <div class="clearfix"></div>
       </div>
       <div class="content-body">
         <% current_user.projects.order("due_on ASC").each do |project| %>
-          <% if !project.completed %>
+          <% if project.completed %>
             <%= render "projects/project", project: project %>
           <% end %>
         <% end %>
