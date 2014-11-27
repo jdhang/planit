@@ -35,6 +35,9 @@ class TasksController < ApplicationController
   def update
     if task_params[:completed]
       @task.completed_on = Date.today
+    else
+      @task.completed = false
+      @task.completed_on = nil
     end
     
     if @task.update(task_params)

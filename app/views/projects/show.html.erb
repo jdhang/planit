@@ -50,7 +50,7 @@
           <span class="task-title">Current Tasks</span>
         </div>
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-          <% @project.tasks.order("completed ASC").order("due_on ASC").each do |task| %>
+          <% @project.tasks.order("due_on ASC").each do |task| %>
             <% if !task.completed %>
               <%= render "tasks/task", project: @project, task: task %>
             <% end %>
